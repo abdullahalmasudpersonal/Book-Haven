@@ -22,8 +22,8 @@
 }
 
 .navbar{
-    box-shadow: 0px 5px 10px 0px #aaa;
     position: fixed;
+    box-shadow: 0px 5px 10px 0px #aaa;
     width: 100%;
     background: #fff;
     color: #000;
@@ -83,8 +83,8 @@
     .navbar-container input[type="checkbox"]{
         position: absolute;
         display: block;
-        height: 32px;
-        width: 30px;
+        height: 22px;
+        width: 20px;
         top: 20px;
         left: 20px;
         z-index: 5;
@@ -94,8 +94,8 @@
 
     .navbar-container .hamburger-lines{
         display: block;
-        height: 28px;
-        width: 35px;
+        height: 20px;
+        width: 25px;
         position: absolute;
         top: 20px;
         left: 20px;
@@ -176,4 +176,11 @@
     .navbar-container input[type="checkbox"]:checked ~ .logo{
         display: none;
     }
+}
+
+/* -------------------------------------- */
+.booksDev{
+   display: grid; 
+   grid-template-columns: auto auto auto auto auto ;
+ 
 }

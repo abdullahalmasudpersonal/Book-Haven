@@ -14,7 +14,8 @@
     <meta name="author" content="Your Name">
 
     <!-- Favicon -->
-    <link rel="icon" href="favicon.ico" type="image/png" style="border-radius: 50%;"> <!-- Favicon for the website -->
+    <link rel="icon" href="/assets/image/Logo/favicon.ico" type="image/png" style="border-radius: 50%;">
+    <!-- Favicon for the website -->
 
     <!-- External CSS Link -->
     <link rel="stylesheet" href="style.css"> <!-- Link to external CSS file -->
@@ -40,25 +41,39 @@
                 </div>
                 <ul class="menu-items">
                     <li><a href="/">Home</a></li>
-                    <li><a href="#">About</a></li>
-                    <li><a href="#">Category</a></li>
-                    <li><a href="#">Menu</a></li>
                     <li><a href="wishlist.html">Wishlist</a></li>
-                    <li><a href="#">Contact</a></li>
                 </ul>
-                <a href="/"> <img class="logo" src="/assets/Logo/Book-Haven-Icon.png" alt="" style="width: 150px;"></a>
+                <a href="/"> <img class="logo" src="/assets/image/Logo/Book-Haven-Icon.png" alt=""
+                        style="width: 150px;"></a>
             </div>
         </nav>
     </header>
 
-
+    <div class="homePageDev">
+        <!-- Loader -->
+        <div id="loader">
+            <div class="devLoader">
+                <div class="loader"> </div>
+            </div>
+        </div>
+        <!-- Books  -->
         <div id="books" class="container booksDev">
+        </div>
+
+        <div class="paginationAlignment">
+            <div id="pagination-container" style="display: none;">
+                <button id="prev-page" class="pagination-btn" disabled>Previous</button>
+                <span id="current-page">1</span>
+                <button id="next-page" class="pagination-btn">Next</button>
+            </div>
         </div>
 
 
 
-    <!-- JavaScript at the bottom for better performance -->
-    <script src="scripts.js" defer></script> <!-- External JS file -->
+    </div>
+
+    <script src="scripts.js" defer></script>
+    <script src="./src/pages/WishListPage.js"></script>
 </body>
 
 </html>

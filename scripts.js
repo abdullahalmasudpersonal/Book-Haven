@@ -1,4 +1,145 @@
 //   ----------------------------------------------------------
+
+
+const wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
+let booksData = [];  
+let currentPage = 1;
+let previousPageURL = null;
+let nextPageURL = null;
+
+///// display books data
+const displayBooks = (books) => {
+  const bookList = document.getElementById("books");
+  bookList.innerHTML = "";
+  books?.forEach((book) => {
+    const bookItem = document.createElement("div");
+    bookItem.classList.add("book-item");
+    bookItem.innerHTML = `
+          <img src="${book.formats["image/jpeg"]}" alt="Book Cover">
+          <h3>${book.title}</h3>
+          <p>Author: ${book.authors[0]?.name || "Unknown"}</p>
+          <p>Genre: ${book.subjects[0] || "N/A"}</p>
+          <button class="wishlist-btn" data-id="${book.id}">
+        ${wishlist.includes(book.id) ? "❤️ Wishlisted" : "❤️ Add to Wishlist"}
+          </button> 
+          <button>
+           <a style='text-decoration:none' href="/bookDetails.html?id=${
+             book.id
+           }" class="details-btn">🔍 View Details</a>
+          </button>`;
+    bookList.appendChild(bookItem);
+  });
+//////////////////////////
+};
+
+
+//////////// load books main function
+async function loadBooks() {
+  try {
+    document.getElementById("loader").style.display = "block";
+    document.getElementById("pagination-container").style.display = "none";
+    const response = await fetch(
+      `https://gutendex.com/books/?page=${currentPage}`
+    );
+    const data = await response.json();
+    booksData = data.results;  
+    displayBooks(booksData);
+
+    previousPageURL = data.previous;
+    nextPageURL = data.next;
+
+    document.getElementById("prev-page").disabled = !previousPageURL;
+    document.getElementById("next-page").disabled = !nextPageURL;
+
+    document.getElementById("current-page").textContent = `Page ${currentPage}`;
+
+    document.getElementById("loader").style.display = "none";
+    document.getElementById("pagination-container").style.display = "block";
+  } catch (error) {
+    console.log(error);
+    document.getElementById("loading").style.display = "none";
+  }
+}
+
+// Filter books by title
+function filterBooksByTitle(searchQuery) {
+
+  const filteredBooks = booksData.filter((book) =>
+
+      book.title.toLowerCase().includes(searchQuery)
+  );
+  console.log(filteredBooks)
+
+   displayBooks(filteredBooks);
+}
+
+// Search functionality
+document.getElementById("search-input").addEventListener("input", (e) => {
+  const searchQuery = e.target.value.toLowerCase();
+   filterBooksByTitle(searchQuery);
+  // console.log(searchQuery, 'searchquery')
+});
+
+
+
+///////////// previous or next pagination
+document.getElementById("prev-page").addEventListener("click", () => {
+  if (previousPageURL) {
+    currentPage--;
+    loadBooks(previousPageURL);
+  }
+});
+document.getElementById("next-page").addEventListener("click", () => {
+  if (nextPageURL) {
+    currentPage++;
+    loadBooks(nextPageURL);
+  }
+});
+
+///////////// Add or remove Wishlist
+document.addEventListener("click", (e) => {
+  if (e.target.classList.contains("wishlist-btn")) {
+    const bookId = parseInt(e.target.dataset.id);
+
+    if (!wishlist.includes(bookId)) {
+      // বই Wishlist-এ যোগ করা
+      wishlist.push(bookId);
+      localStorage.setItem("wishlist", JSON.stringify(wishlist));
+      e.target.textContent = "❤️ Wishlisted"; // বাটনের টেক্সট আপডেট করা
+    } else {
+      // বই Wishlist থেকে মুছে ফেলা
+      const index = wishlist.indexOf(bookId);
+      wishlist.splice(index, 1);
+      localStorage.setItem("wishlist", JSON.stringify(wishlist));
+      e.target.textContent = "❤️ Add to Wishlist"; // বাটনের টেক্সট আপডেট করা
+    }
+  }
+});
+
+///// call loadbooks
+loadBooks();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 // const createBook = (book) => {
 //   const id = book?.id;
 //   const title = book?.title;
@@ -24,27 +165,10 @@
 //           `;
 // };
 
- const wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
- let currentPage = 1;
- let previousPageURL = null; 
- let nextPageURL = null; 
 
- ///// display books data
-const displayBooks = (books) => {
-  const bookList = document.getElementById("books");
-  bookList.innerHTML = "";
-  books?.forEach((book) => {
-    const bookItem = document.createElement("div");
-    bookItem.classList.add("book-item");
-    bookItem.innerHTML = `
-          <img src="${book.formats["image/jpeg"]}" alt="Book Cover">
-          <h3>${book.title}</h3>
-          <p>Author: ${book.authors[0]?.name || "Unknown"}</p>
-          <p>Genre: ${book.subjects[0] || "N/A"}</p>
-          <button class="wishlist-btn" data-id="${book.id }">
-        ${wishlist.includes(book.id) ? "❤️ Wishlisted" : "❤️ Add to Wishlist"}
-          </button>`;
-    bookList.appendChild(bookItem); });
+
+
+
   // books?.results?.forEach(book => {
   //     // প্রতিটি বইয়ের জন্য একটি div তৈরি করা
   //     const bookItem = document.createElement('div');
@@ -87,71 +211,3 @@ const displayBooks = (books) => {
   //     const div = createBook(book);
   //     bookList.appendChild(div);
   //   });
-};
-
-//////////// load books main function 
-async function loadBooks() {
-  try {
-    document.getElementById("loader").style.display = "block";
-    document.getElementById("pagination-container").style.display = "none";
-    const response = await fetch(
-      `https://gutendex.com/books/?page=${currentPage}`
-    );
-    const data = await response.json();
-    displayBooks(data.results);
-
-    previousPageURL = data.previous;
-    nextPageURL = data.next;
-
-    document.getElementById("prev-page").disabled = !previousPageURL;
-    document.getElementById("next-page").disabled = !nextPageURL;
-
-    document.getElementById("current-page").textContent = `Page ${currentPage}`;
-
-    document.getElementById("loader").style.display = "none";
-    document.getElementById("pagination-container").style.display = "block";
-  } catch (error) {
-    console.log(error);
-    document.getElementById("loading").style.display = "none";
-  }
-}
-
-///////////// previous or next pagination
-document.getElementById("prev-page").addEventListener("click", () => {
-  if (previousPageURL) {
-    currentPage--; 
-    loadBooks(previousPageURL); 
-  }
-});
-document.getElementById("next-page").addEventListener("click", () => {
-  if (nextPageURL) {
-    currentPage++; 
-    loadBooks(nextPageURL); 
-  }
-});
-
-///////////// Add or remove Wishlist
-document.addEventListener("click", (e) => {
-  if (e.target.classList.contains("wishlist-btn")) {
-    const bookId = parseInt(e.target.dataset.id);
-
-    if (!wishlist.includes(bookId)) {
-      // বই Wishlist-এ যোগ করা
-      wishlist.push(bookId);
-      localStorage.setItem("wishlist", JSON.stringify(wishlist));
-      e.target.textContent = "❤️ Wishlisted";  // বাটনের টেক্সট আপডেট করা
-    } else {
-      // বই Wishlist থেকে মুছে ফেলা
-      const index = wishlist.indexOf(bookId);
-      wishlist.splice(index, 1);
-      localStorage.setItem("wishlist", JSON.stringify(wishlist));
-      e.target.textContent = "❤️ Add to Wishlist";  // বাটনের টেক্সট আপডেট করা
-    }
-  }
-});
-
-
-
-///// call loadbooks
-loadBooks();
-

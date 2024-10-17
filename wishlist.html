@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Ensures responsive design -->
     <meta http-equiv="X-UA-Compatible" content="IE=edge"> <!-- Ensures compatibility with Internet Explorer -->
 
-    <title>Book Haven</title> <!-- Title of the webpage that appears in the browser tab -->
+    <title>Wishlist || Book Haven</title> <!-- Title of the webpage that appears in the browser tab -->
 
 
     <!-- Favicon -->
@@ -37,16 +37,26 @@
                 <ul class="menu-items">
                     <li><a href="/">Home</a></li>
                     <li><a href="wishlist.html">Wishlist</a></li>
+                    <li><a href="bookDetails.html">BookDetails</a></li>
                 </ul>
                 <a href="/"> <img class="logo" src="/assets/image/Logo/Book-Haven-Icon.png" alt=""
                         style="width: 150px;"></a>
             </div>
         </nav>
     </header>
-
+    
 
     <div style="margin-top: 100px;" class="container">
         <h2>Your Wishlist <span id="wishlist-count">0</span></h2>
+
+             <!-- Loader -->
+             <div id="loader">
+                <div class="devLoader">
+                    <div class="loader"> </div>
+                </div>
+            </div>
+
+        
         <div id="wishlist-books" class="booksDev">
             <!-- Wishlist Books will be shown here -->
         </div>

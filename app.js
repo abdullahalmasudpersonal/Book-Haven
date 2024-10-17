@@ -70,12 +70,15 @@ document.addEventListener("click", (e) => {
   ///////// load wishlist api
   async function loadWishlistBooks() {
     try {
+        document.getElementById("loader").style.display = "block";
       const response = await fetch('https://gutendex.com/books');
       const data = await response.json();
       booksData = data.results;  
       displayWishlistBooks(booksData);
+      document.getElementById("loader").style.display = "none";
     } catch (error) {
       console.log("Error loading wishlist books:", error);
+      document.getElementById("loader").style.display = "none";
     }
   }
 

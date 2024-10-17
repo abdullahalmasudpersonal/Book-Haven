@@ -61,25 +61,37 @@ async function loadBooks() {
   }
 }
 
+//////////// Searching implementation /////////////////////////
 // Filter books by title
 function filterBooksByTitle(searchQuery) {
-
   const filteredBooks = booksData.filter((book) =>
-
       book.title.toLowerCase().includes(searchQuery)
   );
-  console.log(filteredBooks)
-
    displayBooks(filteredBooks);
 }
-
 // Search functionality
 document.getElementById("search-input").addEventListener("input", (e) => {
   const searchQuery = e.target.value.toLowerCase();
    filterBooksByTitle(searchQuery);
-  // console.log(searchQuery, 'searchquery')
 });
 
+//////////////////// filtering implementarion
+document.getElementById("genre-filter").addEventListener("change", (e) => {
+  // document.getElementById("loader").style.display = "block";
+  const selectedGenre = e.target.value;
+
+  // const filter = booksData?filter(book => book?.subjects.includes())
+  const filteredBooks = selectedGenre 
+  ? booksData?.filter(book => book.subjects.some(subject => subject.toLowerCase().includes(selectedGenre)))   // সাবজেক্টসের মধ্যে নির্বাচিত genre আছে কিনা তা চেক করা
+  : booksData;
+
+const mas = booksData?.filter(book => book.subjects.some(subject => subject.toLowerCase().includes(selectedGenre)))
+
+    console.log(booksData?.filter(book => book.subjects.some(subject => subject.toLowerCase().includes("Fiction"))), 'filterbooks', filteredBooks,selectedGenre,mas )
+    displayBooks(filteredBooks);
+   // console.log(filteredBooks)
+    // document.getElementById("loading").style.display = "none";
+});
 
 
 ///////////// previous or next pagination

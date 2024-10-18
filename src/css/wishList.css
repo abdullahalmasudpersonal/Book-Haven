@@ -1,0 +1,88 @@
+.booksDev {
+  display: grid;
+  grid-template-columns: auto auto auto auto;
+  gap: 30px;
+}
+
+/* ---------------------- start book view csss -------------------------------- */
+.wishlist-book-item > div {
+  /* background-color: rgb(147, 145, 179); */
+  box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px,
+    rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
+  border-radius: 3px;
+  min-width: 270px;
+  max-width: 330px;
+  color: rgb(90, 90, 90);
+  transition: 0.9s;
+  /* margin: 3px; */
+  /* border-radius: 5px; */
+}
+.wishlist-book-item > div:hover {
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+}
+/* ------ image dev--------- */
+.wishlist-book-item .imgDiv {
+  display: flex;
+  justify-content: center;
+  background-color: rgb(234, 234, 235);
+  padding: 40px 20px 40px 20px;
+  border-radius: 3px 3px 0 0;
+  /* border: 1px solid rgb(255, 0, 0); */
+}
+.wishlist-book-item .imgDiv img {
+  /* border: 1px solid salmon; */
+  height: 200px;
+  width: 150px;
+  border-radius: 3px;
+  box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px,
+    rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
+  /* height: 200px;
+     width: 150px ;
+    
+     box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px; */
+}
+/* ------------- bookDetailsDiv ------------  */
+.wishlist-book-item .bookDetailsDiv {
+  padding: 10px;
+  height: 150px;
+  position: relative;
+}
+.wishlist-book-item .bookDetailsDiv h3 {
+  margin-top: 5px;
+  margin-bottom: 0;
+  padding: 0;
+  color: rgb(94, 94, 94);
+  cursor: pointer;
+}
+.wishlist-book-item .bookDetailsAuthor {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+.wishlist-book-item .bookDetailsSubject {
+  margin: 0;
+}
+.wishlist-book-item .bookDetailsId {
+  margin-top: 10px;
+}
+
+.wishlist-book-item .remove-from-wishlist-btn {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 10px;
+  cursor: pointer;
+  color: rgb(255, 255, 255);
+  border: 1px solid rgb(255, 103, 103);
+  border-radius: 0 0 2px 2px;
+  background-color: rgb(255, 103, 103);
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+    rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+  transition: 0.9s, transform 0.9s;
+}
+.wishlist-book-item .remove-from-wishlist-btn:hover {
+  color: white;
+  background-color: rgb(255, 0, 0);
+  border: 1px solid rgb(255, 0, 0);;
+  border-radius: 0 0 2px 2px;
+}

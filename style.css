@@ -1,5 +1,6 @@
 /* ---------------------- Home page csss -------------------------------- */
 .homeMainDiv{
+  height: 100vh;
   margin-top: 100px !important;
 }
 @media (max-width:991px) {
@@ -73,9 +74,3 @@
 #close-btn:hover {
   color: darkred;
 }
-
-/* ----------------------- active route */
-/* .activeRoute {
-  font-weight: bold;
-  color: red; 
-} */

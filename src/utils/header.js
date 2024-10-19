@@ -24,3 +24,18 @@ document.querySelectorAll(".menu-link").forEach((link) => {
      link.classList.add("active");
   }
 });
+
+
+// /////////// Header search ber //////////////////
+document.getElementById("search-form").addEventListener("submit", function (e) {
+   e.preventDefault(); // Prevent form from refreshing the page
+ 
+   // সার্চ ইনপুটের ভ্যালু পাওয়া
+   const searchQuery = document.getElementById("search-input").value;
+ 
+   // সার্চ পেজে রিডাইরেক্ট করা (GET রিকোয়েস্টের মাধ্যমে কুয়েরি প্যারামিটার সহ)
+   if (searchQuery) {
+     window.location.href = `/search.html?query=${encodeURIComponent(searchQuery)}`;
+   }
+ });
+ 

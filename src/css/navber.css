@@ -14,11 +14,16 @@
   --color-red-300: #ff6682;
   --color-red-400: #ff3358;
   --color-red-500: #e6002a;
-  --shadow-small: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
-  --shadow-medium: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-  --shadow-large: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  --shadow-small: 0 1px 3px 0 rgba(0, 0, 0, 0.1),
+    0 1px 2px 0 rgba(0, 0, 0, 0.06);
+  --shadow-medium: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --shadow-large: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
+    0 4px 6px -2px rgba(0, 0, 0, 0.05);
 }
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
@@ -46,7 +51,8 @@ body {
 main {
   overflow: hidden;
 }
-a, button {
+a,
+button {
   cursor: pointer;
   user-select: none;
   border: none;
@@ -54,7 +60,8 @@ a, button {
   background: none;
   box-shadow: none;
 }
-img, video {
+img,
+video {
   display: block;
   max-width: 100%;
   height: auto;
@@ -129,7 +136,7 @@ img, video {
     height: 4.25rem;
     padding-top: 0;
     margin: 0 auto;
- }
+  }
 }
 .brand {
   justify-self: start;
@@ -189,10 +196,10 @@ img, video {
     order: initial;
     width: 100%;
     height: auto;
- }
+  }
   .search-form {
     max-width: 30rem;
- }
+  }
 }
 .menu {
   position: fixed;
@@ -218,22 +225,53 @@ img, video {
   justify-content: center;
   row-gap: 1.25rem;
 }
+
 .menu-link {
+  position: relative;
+  display: inline-block;
   font-family: inherit;
   font-size: 1rem;
   font-weight: 500;
   line-height: inherit;
+  color: rgb(56, 56, 56); 
   text-transform: uppercase;
-  color: var(--color-black-500);
-  transition: all 0.35s ease-in-out;
+  text-decoration: none;
+  padding: 0.2rem .5rem;
+  transition: color 0.3s ease;
 }
+
 .menu-link:hover {
-  outline: none;
-  color: var(--color-red-400);
+  color: rgb(88, 88, 88); 
 }
+
+.menu-link::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 3px;
+  bottom: 0;
+  left: 0;
+  background-color: gray; 
+  visibility: hidden;
+  transform: scaleX(0);
+  transition: all 0.3s ease-in-out;
+}
+
+.menu-link:hover::before {
+  visibility: visible;
+  transform: scaleX(1);
+}
+
 .menu-link.active {
-  color: var(--color-red-400); /* active লিংকের জন্য আলাদা রং */
+  color: gray; /* Active link এর জন্য কালার */
 }
+
+.menu-link.active::before {
+  visibility: visible;
+  transform: scaleX(1);
+}
+
+
 @media only screen and (min-width: 36rem) {
   .menu {
     position: relative;
@@ -246,16 +284,16 @@ img, video {
     background: none;
     box-shadow: none;
     transition: none;
- }
+  }
   .menu-inner {
     display: flex;
     flex-direction: row;
     column-gap: 1.25rem;
     margin: 0 auto;
- }
+  }
   .menu-link {
     text-transform: capitalize;
- }
+  }
 }
 .burger {
   position: relative;
@@ -276,7 +314,7 @@ img, video {
   .burger {
     display: none;
     visibility: hidden;
- }
+  }
 }
 .burger-line {
   position: absolute;
@@ -314,189 +352,3 @@ img, video {
   top: 0.5rem;
   transform: rotate(-135deg);
 }
-
-
-/* ---------------------- start navber csss -------------------------------- */
-/* *::after,
-*::before {
-  box-sizing: border-box;
-  padding: 0;
-  margin: 0;
-}
-
-.html {
-  font-size: 62.5%;
-}
-
-.navbar input[type="checkbox"],
-.navbar .hamburger-lines {
-  display: none;
-}
-
-.container {
-  max-width: 1200px;
-  width: 95%;
-  margin: auto;
-  position: relative;
-}
-
-.navbar {
-  position: fixed;
-  box-shadow: 0px 5px 10px 0px #aaa;
-  width: 100%;
-  top: 0;
-  background: #eaeaee;
-  color: #000;
-  opacity: 1;
-  z-index: 100;
-}
-
-.navbar-container {
-  display: flex;
-  justify-content: space-between;
-  height: 64px;
-  align-items: center;
-}
-
-.menu-items {
-  order: 2;
-  display: flex;
-}
-
-.logo {
-  order: 1;
-  font-size: 2.3rem;
-}
-
-.menu-items li {
-  padding: 0;
-  list-style: none;
-  margin-left: 1.5rem;
-  font-size: 1.3rem;
-}
-
-.navbar a {
-  color: #444;
-  text-decoration: none;
-  font-weight: 500;
-  transition: color 0.3s ease-in-out;
-}
-
-.navbar a:hover {
-  color: #117964;
-}
-
-@media (max-width: 768px) {
-  .navbar {
-    opacity: 1;
-  }
-
-  .navbar-container input[type="checkbox"],
-  .navbar-container .hamburger-lines {
-    display: block;
-  }
-
-  .navbar-container {
-    display: block;
-    position: relative;
-    height: 64px;
-  }
-
-  .navbar-container input[type="checkbox"] {
-    position: absolute;
-    display: block;
-    height: 22px;
-    width: 20px;
-    top: 20px;
-    left: 20px;
-    z-index: 5;
-    opacity: 0;
-    cursor: pointer;
-  }
-
-  .navbar-container .hamburger-lines {
-    display: block;
-    height: 20px;
-    width: 25px;
-    position: absolute;
-    top: 20px;
-    left: 20px;
-    z-index: 2;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-  }
-
-  .navbar-container .hamburger-lines .line {
-    display: block;
-    height: 4px;
-    width: 100%;
-    border-radius: 10px;
-    background: #333;
-  }
-
-  .navbar-container .hamburger-lines .line1 {
-    transform-origin: 0% 0%;
-    transition: transform 0.3s ease-in-out;
-  }
-
-  .navbar-container .hamburger-lines .line2 {
-    transition: transform 0.2s ease-in-out;
-  }
-
-  .navbar-container .hamburger-lines .line3 {
-    transform-origin: 0% 100%;
-    transition: transform 0.3s ease-in-out;
-  }
-
-  .navbar .menu-items {
-    margin-top: 0;
-    padding-top: 100px;
-    background: #fff;
-    height: 100vh;
-    max-width: 250px;
-    transform: translate(-150%);
-    display: flex;
-    flex-direction: column;
-    margin-left: -40px;
-    padding-left: 40px;
-    transition: transform 0.5s ease-in-out;
-    box-shadow: 5px 0px 10px 0px #aaa;
-    overflow: hidden;
-  }
-
-  .navbar .menu-items li {
-    margin-bottom: 1.8rem;
-    font-size: 1.1rem;
-    font-weight: 500;
-  }
-
-  .logo {
-    position: absolute;
-    top: 17px;
-    right: 20px;
-  }
-
-  .navbar-container input[type="checkbox"]:checked ~ .menu-items {
-    transform: translateX(0);
-  }
-
-  .navbar-container input[type="checkbox"]:checked ~ .hamburger-lines .line1 {
-    transform: rotate(45deg);
-  }
-
-  .navbar-container input[type="checkbox"]:checked ~ .hamburger-lines .line2 {
-    transform: scaleY(0);
-  }
-
-  .navbar-container input[type="checkbox"]:checked ~ .hamburger-lines .line3 {
-    transform: rotate(-45deg);
-  }
-}
-
-@media (max-width: 500px) {
-  .navbar-container input[type="checkbox"]:checked ~ .logo {
-    display: none;
-  }
-} */
-/* ---------------------- end navber csss -------------------------------- */

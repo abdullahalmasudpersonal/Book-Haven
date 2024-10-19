@@ -18,7 +18,7 @@
     <link rel="stylesheet" href="style.css"> <!-- Link to external CSS file -->
     <link rel="stylesheet" href="/src/css/navber.css"> <!-- Link to external CSS file -->
     <link rel="stylesheet" href="/src/css/loding.css"> <!-- Link to external CSS file -->
-    <link rel="stylesheet" href="/src/css/books.css"> <!-- Link to external CSS file -->
+    <!-- <link rel="stylesheet" href="/src/css/books.css"> Link to external CSS file -->
     <link rel="stylesheet" href="/src/css/wishList.css"> <!-- Link to external CSS file -->
 
     <!-- External Fonts or Libraries (Optional) -->
@@ -28,7 +28,7 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" defer></script> <!-- External JS file -->
 </head>
 
-<body style="margin: 0; box-sizing: 0;">
+<body>
 
     <!-- Header Section -->
     <header class="header" id="header">
@@ -58,28 +58,7 @@
         </nav>
     </header>
 
-    <!-- <header>
-        <nav class="navbar">
-            <div class="navbar-container container">
-                <input type="checkbox" name="" id="">
-                <div class="hamburger-lines">
-                    <span class="line line1"></span>
-                    <span class="line line2"></span>
-                    <span class="line line3"></span>
-                </div>
-                <ul class="menu-items">
-                    <li><a href="/">Home</a></li>
-                    <li><a href="/books.html">Books</a></li>
-                    <li><a href="wishlist.html">Wishlist  (<span id="wishlist-count">0</span>)</a></li>
-                </ul>
-                <a href="/"> <img class="logo" src="/assets/image/Logo/Book-Haven-Icon.png" alt=""
-                        style="width: 150px;"></a>
-            </div>
-        </nav>
-    </header> -->
-
-
-    <div style="margin-top: 100px; margin-bottom: 60px;" class="container">
+    <div class="container homeMainDiv ">
         <h2>Your Wishlist <span id="wishlist-count">0</span></h2>
 
         <!-- Loader -->
@@ -90,16 +69,17 @@
         </div>
 
 
-        <div id="wishlist-books" class="booksDev">
-            <!-- Wishlist Books will be shown here -->
+        <div id="wishlist-books" class="booksDev"> 
         </div>
-    </div>
-
+        <div style="height: 100px;"></div>
     </div>
 
     <!-- JavaScript at the bottom for better performance -->
-    <script type="module" src="app.js"></script> <!-- External JS file -->
+    <script type="module" src="/src/pages/WishListPage.js"></script> <!-- External JS file -->
     <script type="module" src="/src/utils/displayBooks.js" defer></script>
+
+    
+    <script src="/src/utils/header.js" defer></script> <!--all pages script --! >
 </body>
 
 </html>

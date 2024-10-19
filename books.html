@@ -10,7 +10,7 @@
 
     <!-- Favicon -->
     <link rel="icon" href="/assets/image/Logo/favicon.ico" type="image/png" style="border-radius: 50%;">
-
+    
     <!-- font icon link -->
     <link href="https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css" rel="stylesheet">
 
@@ -22,8 +22,9 @@
 
 </head>
 
-<body><!-- style="margin: 0; box-sizing: 0;"-->
+<body style="margin: 0; box-sizing: 0;">
 
+    <!-- Header Section -->
     <header class="header" id="header">
         <nav class="navbar container">
             <a href="/" class="brand"> <img class="logo" src="/assets/image/Logo/Book-Haven-Icon.png" alt=""
@@ -40,7 +41,7 @@
                 <ul class="menu-inner">
                     <li class="menu-item"><a href="/" class="menu-link">Home</a></li>
                     <li class="menu-item"><a href="/books.html" class="menu-link">Books</a></li>
-                    <li class="menu-item"><a href="/wishlist.html" class="menu-link">Wishlist<i class='bx bx-heart'></i></a></li>
+                    <li class="menu-item"><a href="/wishlist.html" class="menu-link">Wishlist</a></li>
                 </ul>
             </div>
             <div class="burger" id="burger">
@@ -51,41 +52,7 @@
         </nav>
     </header>
 
-    <!-- Header Section -->
-    <!--  <header>
-        <nav class="navbar">
-            <div class="navbar-container container">
-                <input type="checkbox" name="" id="">
-                <div class="hamburger-lines">
-                    <span class="line line1"></span>
-                    <span class="line line2"></span>
-                    <span class="line line3"></span>
-                </div>
-                <ul class="menu-items">
-                    <li><a href="/">Home</a></li>
-                    <li><a href="/books.html">Books</a></li>
-                    <li><a href="wishlist.html">Wishlist</a></li>
-                </ul>
-
-                <a href="/"> <img class="logo" src="/assets/image/Logo/Book-Haven-Icon.png" alt=""
-                        style="width: 150px;"></a>
-
-                <div class="searchBer"><input type="text" id="search-input" placeholder="Search Books..." />
-                    <button id="close-btn">X</button>
-                </div> 
-
-                <div>
-                    <form id="search-form">
-                        <input type="text" id="search-input" placeholder="Search books..." />
-                        <button type="submit">Search</button>
-                    </form>
-                </div>
-
-            </div>
-        </nav>
-    </header> -->
-
-    <div  class="container homeMainDiv">
+    <div style="margin-top: 100px;" class="container">
         <!-- Loader -->
         <div id="loader">
             <div class="devLoader">
@@ -94,7 +61,6 @@
         </div>
         <!-- Books  -->
         <div id="books" class="booksDev"> </div>
-
 
         <div class="paginationAlignment">
             <div id="pagination-container" style="display: none;">
@@ -105,15 +71,9 @@
         </div>
     </div>
 
-
-    
-    <!----------------------- Javascript -------------------------- -->
     <script type="module" src="scripts.js" defer></script>
     <script type="module" src="/src/utils/displayBooks.js" defer></script>
     <!-- <script src="./src/pages/WishListPage.js"></script> -->
-
-    <!-- Herder responsive baer -->
-    <script src="/src/utils/header.js" defer></script>
 </body>
 
 </html>

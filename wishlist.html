@@ -8,9 +8,11 @@
 
     <title>Wishlist || Book Haven</title> <!-- Title of the webpage that appears in the browser tab -->
 
-
     <!-- Favicon -->
     <link rel="icon" href="favicon.ico" type="image/png" style="border-radius: 50%;"> <!-- Favicon for the website -->
+
+    <!-- font icon link -->
+    <link href="https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css" rel="stylesheet">
 
     <!-- External CSS Link -->
     <link rel="stylesheet" href="style.css"> <!-- Link to external CSS file -->
@@ -29,7 +31,34 @@
 <body style="margin: 0; box-sizing: 0;">
 
     <!-- Header Section -->
-    <header>
+    <header class="header" id="header">
+        <nav class="navbar container">
+            <a href="/" class="brand"> <img class="logo" src="/assets/image/Logo/Book-Haven-Icon.png" alt=""
+                    style="width: 150px;"></a>
+            <div class="search">
+                <form id="search-form" class="search-form">
+                    <input id="search-input" type="text" name="search" class="search-input"
+                        placeholder="Search books..." autofocus>
+                    <button type="submit" class="search-submit"><i class="bx bx-search"></i></button>
+                </form>
+            </div>
+
+            <div class="menu" id="menu">
+                <ul class="menu-inner">
+                    <li class="menu-item"><a href="/" class="menu-link">Home</a></li>
+                    <li class="menu-item"><a href="/books.html" class="menu-link">Books</a></li>
+                    <li class="menu-item"><a href="/wishlist.html" class="menu-link">Wishlist</a></li>
+                </ul>
+            </div>
+            <div class="burger" id="burger">
+                <span class="burger-line"></span>
+                <span class="burger-line"></span>
+                <span class="burger-line"></span>
+            </div>
+        </nav>
+    </header>
+
+    <!-- <header>
         <nav class="navbar">
             <div class="navbar-container container">
                 <input type="checkbox" name="" id="">
@@ -40,27 +69,27 @@
                 </div>
                 <ul class="menu-items">
                     <li><a href="/">Home</a></li>
+                    <li><a href="/books.html">Books</a></li>
                     <li><a href="wishlist.html">Wishlist  (<span id="wishlist-count">0</span>)</a></li>
-                    <li><a href="bookDetails.html">BookDetails</a></li>
                 </ul>
                 <a href="/"> <img class="logo" src="/assets/image/Logo/Book-Haven-Icon.png" alt=""
                         style="width: 150px;"></a>
             </div>
         </nav>
-    </header>
-    
+    </header> -->
+
 
     <div style="margin-top: 100px; margin-bottom: 60px;" class="container">
         <h2>Your Wishlist <span id="wishlist-count">0</span></h2>
 
-             <!-- Loader -->
-             <div id="loader">
-                <div class="devLoader">
-                    <div class="loader"> </div>
-                </div>
+        <!-- Loader -->
+        <div id="loader">
+            <div class="devLoader">
+                <div class="loader"> </div>
             </div>
+        </div>
 
-        
+
         <div id="wishlist-books" class="booksDev">
             <!-- Wishlist Books will be shown here -->
         </div>
@@ -69,7 +98,8 @@
     </div>
 
     <!-- JavaScript at the bottom for better performance -->
-    <script src="app.js"></script> <!-- External JS file -->
+    <script type="module" src="app.js"></script> <!-- External JS file -->
+    <script type="module" src="/src/utils/displayBooks.js" defer></script>
 </body>
 
 </html>

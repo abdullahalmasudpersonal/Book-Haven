@@ -1,4 +1,12 @@
-/* ---------------------- start navber csss -------------------------------- */
+/* ---------------------- Home page csss -------------------------------- */
+.homeMainDiv{
+  margin-top: 100px !important;
+}
+@media (max-width:991px) {
+  .homeMainDiv{
+    margin-top: 150px !important;
+  }
+}
 /* ---------------------search ber ------------------- */
 .searchBer input{
  height: 20px;
@@ -65,3 +73,9 @@
 #close-btn:hover {
   color: darkred;
 }
+
+/* ----------------------- active route */
+/* .activeRoute {
+  font-weight: bold;
+  color: red; 
+} */

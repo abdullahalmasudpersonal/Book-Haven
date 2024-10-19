@@ -1,62 +1,11 @@
-const wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
+import { displayBooks } from "./src/utils/displayBooks.js";
+
+export const wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
 let booksData = [];
 let currentPage = 1;
 let previousPageURL = null;
 let nextPageURL = null;
 
-///// display books data
-const displayBooks = (books) => {
-  const bookList = document.getElementById("books");
-  bookList.innerHTML = "";
-  books?.forEach((book) => {
-    const bookItem = document.createElement("div");
-    bookItem.classList.add("book-item");
-    bookItem.innerHTML = `
-        <div>
-          <div  class='imgDiv'>
-             <img src="${book.formats["image/jpeg"]}" alt="Book Cover">
-          </div>
-          <div class='bookDetailsDiv'>
-            <a style='text-decoration:none' href="/bookDetails.html?id=${book.id}" >
-            <h3 title="${book.title}">${
-      book.title?.length > 25 ? book?.title.slice(0, 25) + "..." : book?.title
-    }</h3>
-            </a>
-            <p class='bookDetailsAuthor' title="${
-              book?.authors[0]?.name || "Unknown"
-            }">Author: ${
-      book.authors[0]?.name?.length > 25
-        ? book.authors[0]?.name?.slice(0, 25) || "Unknown"
-        : book.authors[0]?.name || "Unknown"
-    }</p>
-            <p class='bookDetailsSubject' title='${
-              book.subjects[0] || "N/A"
-            }'>Genre: ${
-      book.subjects[0]?.length > 26
-        ? book.subjects[0]?.slice(0, 26) + "..." || "N/A"
-        : book.subjects[0] || "N/A"
-    }</p>
-            <p class='bookDetailsId'>BookId: ${book.id || "N/A"}</p>
-            <button class="wishlist-btn" data-id="${book.id}">
-            ${
-              wishlist.includes(book.id)
-                ? "❤️ Wishlisted"
-                : "❤️ Add to Wishlist"
-            }
-            </button> 
-             <a style='text-decoration:none' href="/bookDetails.html?id=${
-               book.id
-             }" class="details-btn">
-             <button   class='viewDetailBtn'>
-              🔍 View Details
-              </button>
-              </a>
-          </div>
-        </div>`;
-    bookList.appendChild(bookItem);
-  });
-  //////////////////////////
-};
 
 //////////// load books main function
 async function loadBooks() {
@@ -99,26 +48,25 @@ function filterBooksByTitle(searchQuery) {
   localStorage.setItem("searchQuery", searchQuery);
 }
 // Search functionality
-document.getElementById("search-input").addEventListener("input", (e) => {
-  const searchQuery = e.target.value.toLowerCase();
-  filterBooksByTitle(searchQuery);
-});
+// document.getElementById("search-input").addEventListener("input", (e) => {
+//   const searchQuery = e.target.value.toLowerCase();
+//   filterBooksByTitle(searchQuery);
+// });
 
 //////////////////// Genre filtering implementarion
-document.getElementById("genre-filter").addEventListener("change", (e) => {
-  const selectedGenre = e.target.value;
-  const filteredBooks = selectedGenre
-    ? booksData?.filter((book) =>
-        book.subjects.some((subject) =>
-          subject.toLowerCase().includes(selectedGenre)
-        )
-      )
-    : booksData;
-  displayBooks(filteredBooks);
-  localStorage.setItem("selectedGenre", selectedGenre);
-});
+// document.getElementById("genre-filter").addEventListener("change", (e) => {
+//   const selectedGenre = e.target.value;
+//   const filteredBooks = selectedGenre
+//     ? booksData?.filter((book) =>
+//         book.subjects.some((subject) =>
+//           subject.toLowerCase().includes(selectedGenre)
+//         )
+//       )
+//     : booksData;
+//   displayBooks(filteredBooks);
+//   localStorage.setItem("selectedGenre", selectedGenre);
+// });
 
-/////////////////
 //////// Apply saved search and filter from localStorage
 function applySavedSearchAndFilter() {
   const savedSearchQuery = localStorage.getItem("searchQuery");
@@ -154,10 +102,11 @@ function applySavedSearchAndFilter() {
 window.addEventListener("DOMContentLoaded", () => {
   loadBooks(); // এখানে loadBooks কল করা যাতে ডেটা লোড হয় এবং তারপর ফিল্টার অ্যাপ্লাই হয়
 
-  document.getElementById("close-btn").addEventListener("click", function () {
-    document.getElementById("search-input").value = ""; // ইনপুট ফিল্ড খালি করা
-    filterBooksByTitle(""); // ইনপুট খালি হলে সব বই আবার দেখানোর জন্য
-  });
+  // document.getElementById("close-btn").addEventListener("click", function () {
+  //   document.getElementById("search-input").value = ""; // ইনপুট ফিল্ড খালি করা
+  //   filterBooksByTitle(""); // ইনপুট খালি হলে সব বই আবার দেখানোর জন্য
+  // });
+
 });
 /////////////////////
 
@@ -198,72 +147,19 @@ document.addEventListener("click", (e) => {
 ///// call loadbooks
 loadBooks();
 
-///////////// ‍search ber filtering colseing
 
-// const createBook = (book) => {
-//   const id = book?.id;
-//   const title = book?.title;
-//   const image = book?.formats["image/jpeg"]
-//     ? book.formats["image/jpeg"]
-//     : "default-cover.jpg";
-//   const atuhor = book.authors.length > 0 ? book.authors[0].name : "Unknown";
-//   const genre = book?.subjects?.length > 0 ? book.subjects[0] : "Unknown";
+// ///////////////////////
+document.getElementById("search-form").addEventListener("submit", function (e) {
+  e.preventDefault(); // Prevent form from refreshing the page
 
-//   const bookItem = document.createElement("div");
-//   bookItem.classList.add("book");
+  // সার্চ ইনপুটের ভ্যালু পাওয়া
+  const searchQuery = document.getElementById("search-input").value;
 
-//   bookItem.innerHTML = `
-//               <img src="${coverImg}" alt="Book Cover">
-//               <h3>${book.title}</h3>
-//               <p>Author: ${
-//                 book.authors.length > 0 ? book.authors[0].name : "Unknown"
-//               }</p>
-//               <p>Genre: ${
-//                 book.subjects.length > 0 ? book.subjects[0] : "Unknown"
-//               }</p>
-//               <p class="book-id">ID: ${book.id}</p>
-//           `;
-// };
+  // সার্চ পেজে রিডাইরেক্ট করা (GET রিকোয়েস্টের মাধ্যমে কুয়েরি প্যারামিটার সহ)
+  if (searchQuery) {
+    window.location.href = `/search.html?query=${encodeURIComponent(searchQuery)}`;
+  }
+  console.log(searchQuery, 'asud')
+});
 
-// books?.results?.forEach(book => {
-//     // প্রতিটি বইয়ের জন্য একটি div তৈরি করা
-//     const bookItem = document.createElement('div');
-//     bookItem.classList.add('book'); // CSS class অ্যাসাইন করা
 
-//     // কভার ইমেজ তৈরি করা
-//     const coverImg = document.createElement('img');
-//     coverImg.src = book.formats['image/jpeg'] ? book.formats['image/jpeg'] : 'default-cover.jpg';
-//     coverImg.alt = 'Book Cover';
-
-//     // শিরোনাম তৈরি করা
-//     const title = document.createElement('h3');
-//     title.textContent = book.title;
-
-//     // লেখকের নাম তৈরি করা
-//     const author = document.createElement('p');
-//     author.textContent = `Author: ${book.authors.length > 0 ? book.authors[0].name : 'Unknown'}`;
-
-//     // Genre তৈরি করা
-//     const genre = document.createElement('p');
-//     genre.textContent = `Genre: ${book.subjects.length > 0 ? book.subjects[0] : 'Unknown'}`;
-
-//     // ID তৈরি করা
-//     const bookId = document.createElement('p');
-//     bookId.classList.add('book-id');
-//     bookId.textContent = `ID: ${book.id}`;
-
-//     // সব DOM এলিমেন্টগুলোকে bookItem ডিভে অ্যাপেন্ড করা
-//     bookItem.appendChild(coverImg);
-//     bookItem.appendChild(title);
-//     bookItem.appendChild(author);
-//     bookItem.appendChild(genre);
-//     bookItem.appendChild(bookId);
-
-//     // bookItem div-কে মূল bookList সেকশনে অ্যাপেন্ড করা
-//     bookList.appendChild(bookItem);
-// });
-
-//   books?.results?.forEach((book) => {
-//     const div = createBook(book);
-//     bookList.appendChild(div);
-//   });

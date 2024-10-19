@@ -12,6 +12,9 @@
     <!-- Favicon -->
     <link rel="icon" href="favicon.ico" type="image/png" style="border-radius: 50%;"> <!-- Favicon for the website -->
 
+    <!-- font icon link -->
+    <link href="https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css" rel="stylesheet">
+
     <!-- External CSS Link -->
     <link rel="stylesheet" href="style.css"> <!-- Link to external CSS file -->
     <link rel="stylesheet" href="/src/css/navber.css"> <!-- Link to external CSS file -->
@@ -37,26 +40,32 @@
 <body style="margin: 0; box-sizing: 0;">
 
     <!-- Header Section -->
-    <header>
-        <nav class="navbar">
-            <div class="navbar-container container">
-                <input type="checkbox" name="" id="">
-                <div class="hamburger-lines">
-                    <span class="line line1"></span>
-                    <span class="line line2"></span>
-                    <span class="line line3"></span>
-                </div>
-                <ul class="menu-items">
-                    <li><a href="/">Home</a></li>
-                    <li><a href="wishlist.html">Wishlist</a></li>
-                    <li><a href="bookDetails.html">BookDetails</a></li>
+    <header class="header" id="header">
+        <nav class="navbar container">
+            <a href="/" class="brand"> <img class="logo" src="/assets/image/Logo/Book-Haven-Icon.png" alt=""
+                    style="width: 150px;"></a>
+            <div class="search">
+                <form id="search-form" class="search-form">
+                    <input id="search-input" type="text" name="search" class="search-input"
+                        placeholder="Search books..." autofocus>
+                    <button type="submit" class="search-submit"><i class="bx bx-search"></i></button>
+                </form>
+            </div>
+
+            <div class="menu" id="menu">
+                <ul class="menu-inner">
+                    <li class="menu-item"><a href="/" class="menu-link">Home</a></li>
+                    <li class="menu-item"><a href="/books.html" class="menu-link">Books</a></li>
+                    <li class="menu-item"><a href="/wishlist.html" class="menu-link">Wishlist</a></li>
                 </ul>
-                <a href="/"> <img class="logo" src="/assets/image/Logo/Book-Haven-Icon.png" alt=""
-                        style="width: 150px;"></a>
+            </div>
+            <div class="burger" id="burger">
+                <span class="burger-line"></span>
+                <span class="burger-line"></span>
+                <span class="burger-line"></span>
             </div>
         </nav>
     </header>
-
 
 
     <div style="margin-top: 100px;" class="container">

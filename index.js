@@ -6,7 +6,7 @@ let nextPageURL = null;
 
 ////// display home books /////////
 const displayBooks = async (books) => {
-  const bookList = document.getElementById("books");
+  const bookList = document.getElementById("homeBooks");
   if (books?.length > 0) {
     bookList.innerHTML = "";
   }
@@ -75,14 +75,6 @@ async function loadBooks() {
     booksData = data?.results;
     displayBooks(booksData);
 
-    const storedGenre = localStorage.getItem("selectedGenre");
-
-    if (storedGenre) {
-      filterBooksByGenre(storedGenre); // ফিল্টার করা ডেটা দেখাও
-    } else {
-      displayBooks(booksData); // সব ডেটা দেখাও
-    }
-
     previousPageURL = data?.previous;
     nextPageURL = data?.next;
 
@@ -132,42 +124,6 @@ document.addEventListener("click", (e) => {
     }
   }
 });
-
-//////////////////// Genre filtering implementarion
-document.getElementById("genre-filter").addEventListener("change", (e) => {
-  const selectedGenre = e.target.value;
-  localStorage.setItem("selectedGenre", selectedGenre);
-  filterBooksByGenre(selectedGenre);
-});
-
-//////// পেজ রিলোডের সময় ফিল্টার করা ডেটা দেখানোর ব্যবস্থা
-window.onload = function() {
-  // localStorage থেকে ফিল্টার করা Genre নাও
-  const storedGenre = localStorage.getItem("selectedGenre");
-
-  // যদি কোনো storedGenre থাকে, ফিল্টার করা ডেটা দেখাও
-  if (storedGenre) {
-    document.getElementById("genre-filter").value = storedGenre;
-    filterBooksByGenre(storedGenre);
-  } else {
-    // কোনো storedGenre না থাকলে সব ডেটা দেখাও
-    loadBooks();
-  }
-};
-
-
-///// Genre অনুযায়ী বই ফিল্টার করা ফাংশন
-function filterBooksByGenre(selectedGenre) {
-  const filteredBooks = selectedGenre
-    ? booksData?.filter((book) =>
-        book.subjects.some((subject) =>
-          subject.toLowerCase().includes(selectedGenre.toLowerCase())
-        )
-      )
-    : booksData;
-  displayBooks(filteredBooks);
-}
-
 
 ///// call loadbooks
 loadBooks();

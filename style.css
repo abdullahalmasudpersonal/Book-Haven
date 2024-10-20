@@ -8,22 +8,6 @@
     margin-top: 150px !important;
   }
 }
-/* ---------------------search ber ------------------- */
-.searchBer input{
- height: 20px;
- width: 400px;
- border-radius: 5px;
- border: .5px solid gray;
- /* display: none; */
-}
-.searchBer input:focus{
- outline: none;
-}
-.searchBer button {
-  display: none;
-}
-
-/* --------------------------- */
 
 /* ---------------------- start pagination csss -------------------------------- */
 .paginationAlignment{
@@ -44,33 +28,5 @@
   cursor: not-allowed;
 }
 /* ---------------------- end pagination csss -------------------------------- */
-/* .genreFilter{
-  display: none;
-} */
 
 /* -------------------------------- */
-.searchBer {
-  position: relative;
-  display: inline-block;
-}
-
-#search-input {
-  padding: 8px;
-  font-size: 16px;
-}
-
-#close-btn {
-  position: absolute;
-  right: 10px;
-  top: 50%;
-  transform: translateY(-50%);
-  background-color: transparent;
-  border: none;
-  font-size: 16px;
-  color: red;
-  cursor: pointer;
-}
-
-#close-btn:hover {
-  color: darkred;
-}

@@ -1,16 +1,14 @@
 <!DOCTYPE html>
-<html lang="en"> <!-- Defines the language of the document -->
+<html lang="en">
 
 <head>
-    <meta charset="UTF-8"> <!-- Specifies the character encoding -->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Ensures responsive design -->
-    <meta http-equiv="X-UA-Compatible" content="IE=edge"> <!-- Ensures compatibility with Internet Explorer -->
-
-    <title>Wishlist || Book Haven</title> <!-- Title of the webpage that appears in the browser tab -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Wishlist || Book Haven</title>
 
     <!-- Favicon -->
-    <link rel="icon" href="favicon.ico" type="image/png" style="border-radius: 50%;"> <!-- Favicon for the website -->
-
+    <link rel="icon" href="/assets/image/Logo/favicon.ico" type="image/png" style="border-radius: 50%;">
     <!-- font icon link -->
     <link href="https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css" rel="stylesheet">
 
@@ -18,18 +16,11 @@
     <link rel="stylesheet" href="style.css"> <!-- Link to external CSS file -->
     <link rel="stylesheet" href="/src/css/navber.css"> <!-- Link to external CSS file -->
     <link rel="stylesheet" href="/src/css/loding.css"> <!-- Link to external CSS file -->
-    <!-- <link rel="stylesheet" href="/src/css/books.css"> Link to external CSS file -->
     <link rel="stylesheet" href="/src/css/wishList.css"> <!-- Link to external CSS file -->
 
-    <!-- External Fonts or Libraries (Optional) -->
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-
-    <!-- External JavaScript Libraries (Optional) -->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js" defer></script> <!-- External JS file -->
 </head>
 
 <body>
-
     <!-- Header Section -->
     <header class="header" id="header">
         <nav class="navbar container">
@@ -68,18 +59,17 @@
             </div>
         </div>
 
-
-        <div id="wishlist-books" class="booksDev"> 
+        <div id="wishlist-books" class="booksDev">
         </div>
+
         <div style="height: 100px;"></div>
+
     </div>
 
-    <!-- JavaScript at the bottom for better performance -->
-    <script type="module" src="/src/pages/WishListPage.js"></script> <!-- External JS file -->
-    <script type="module" src="/src/utils/displayBooks.js" defer></script>
+    <!----------------------- Javascript -------------------------- -->
+    <script type="module" src="/src/pages/WishListPage.js"></script> 
+    <script src="/src/utils/header.js" defer></script> 
 
-    
-    <script src="/src/utils/header.js" defer></script> <!--all pages script --! >
 </body>
 
 </html>

@@ -1,6 +1,8 @@
 const wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
 let booksData = [];
 
+document.getElementById("wishlist-count").textContent = wishlist.length;
+
 const urlParams = new URLSearchParams(window?.location?.search);
 const searchQuery = urlParams.get("query");
 

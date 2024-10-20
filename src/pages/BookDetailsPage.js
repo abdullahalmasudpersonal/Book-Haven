@@ -3,6 +3,9 @@ function getBookIdFromUrl() {
   return params.get("id");
 }
 
+const wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
+document.getElementById("wishlist-count").textContent = wishlist.length;
+
 async function loadBookDetails() {
   const bookId = getBookIdFromUrl();
   document.getElementById("loader").style.display = "block";

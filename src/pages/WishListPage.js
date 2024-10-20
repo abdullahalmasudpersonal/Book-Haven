@@ -1,11 +1,11 @@
 let booksData = [];
 
 const wishlistBooksContainer = document.getElementById("wishlist-books");
+const wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
+document.getElementById("wishlist-count").textContent = wishlist.length;
 
 const displayWishlistBooks = (books) => {
   wishlistBooksContainer.innerHTML = "";
-  const wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
-  document.getElementById("wishlist-count").textContent = wishlist.length;
   const wishlistBooks = books.filter((book) => wishlist.includes(book.id));
 
   if (wishlistBooks.length === 0) {
@@ -13,10 +13,10 @@ const displayWishlistBooks = (books) => {
     return;
   }
 
-  wishlistBooks.forEach((book,index) => {
+  wishlistBooks.forEach((book, index) => {
     const bookItem = document.createElement("div");
     bookItem.classList.add("wishlist-book-item");
-    bookItem.style.animationDelay = `${index * 0.10}s`; 
+    bookItem.style.animationDelay = `${index * 0.1}s`;
     bookItem.innerHTML = `
     <div>
       <div  class='imgDiv'>
@@ -61,7 +61,7 @@ document.addEventListener("click", (e) => {
     wishlist = wishlist.filter((id) => id !== bookId);
     localStorage.setItem("wishlist", JSON.stringify(wishlist));
 
-    displayWishlistBooks(booksData); 
+    displayWishlistBooks(booksData);
   }
 });
 

@@ -4,6 +4,8 @@ let currentPage = 1;
 let previousPageURL = null;
 let nextPageURL = null;
 
+document.getElementById("wishlist-count").textContent = wishlist.length;
+
 ////// display home books /////////
 const displayBooks = async (books) => {
   const bookList = document.getElementById("books");

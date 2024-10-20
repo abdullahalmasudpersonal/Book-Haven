@@ -8,6 +8,31 @@
     margin-top: 150px !important;
   }
 }
+/* ----------- wishlistBadges---------- */
+/* .wishListBadgesPosition{
+  position: relative;
+  
+} */
+
+.wishlistBadges{
+   /* background-color: rgb(155, 155, 155);  */
+  padding: 2px 5px;
+  border-radius: 50%;
+  position: relative;
+  top: -5px;
+  right: 5px;
+  /* top: -10px; 
+  right: -10px;  */
+  /* background-color: orange;
+  color: white;
+  border-radius: 50%;
+  width: 25px; 
+  height: 25px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.8rem; */
+}
 
 /* ---------------------- start pagination csss -------------------------------- */
 .paginationAlignment{

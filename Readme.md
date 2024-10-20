@@ -24,3 +24,8 @@
 * Created a navbar.
 * The layout is designed using HTML and CSS.
 * Efforts have been made to make the application fully responsive on mobile, tablet and desktop devices.
+* Avoid Bootstrap or Tailwind CSS to style the application. Only vanilla CSS is used.
+
+### Notes:
+* No templates are used for the UI.
+* Only vanilla JS is used for this task.

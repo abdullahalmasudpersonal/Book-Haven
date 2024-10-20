@@ -19,4 +19,8 @@
 * A wish list is created and stored in local storage, books in the wish list have a love or like icon. Made icon clickable to save/delete as wishlist.
 * In the book list, pagination has been implemented to display multiple pages of book data. Which is next page, previous page.
 
-
+#### 5 - User Interface:
+* Created a homepage that shows the list of books, a wish list page that shows the list of wish-listed books, and each book page that shows the book details.
+* Created a navbar.
+* The layout is designed using HTML and CSS.
+* Efforts have been made to make the application fully responsive on mobile, tablet and desktop devices.

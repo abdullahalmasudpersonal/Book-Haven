@@ -26,6 +26,11 @@
 * Efforts have been made to make the application fully responsive on mobile, tablet and desktop devices.
 * Avoid Bootstrap or Tailwind CSS to style the application. Only vanilla CSS is used.
 
+#### 6 - Optional Bonus Features:
+
+* Implemented smooth animations for showing or hiding books.
+* Local storage is used to store the user's search and filter preferences, so that they persist when the page is refreshed.
+
 ### Notes:
 * No templates are used for the UI.
 * Only vanilla JS is used for this task.

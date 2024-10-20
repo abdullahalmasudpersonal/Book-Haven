@@ -1,44 +1,26 @@
 <!DOCTYPE html>
-<html lang="en"> <!-- Defines the language of the document -->
+<html lang="en">
 
 <head>
-    <meta charset="UTF-8"> <!-- Specifies the character encoding -->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Ensures responsive design -->
-    <meta http-equiv="X-UA-Compatible" content="IE=edge"> <!-- Ensures compatibility with Internet Explorer -->
-
-    <title>Book Details || Book Haven</title> <!-- Title of the webpage that appears in the browser tab -->
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Book Details || Book Haven</title>
 
     <!-- Favicon -->
-    <link rel="icon" href="favicon.ico" type="image/png" style="border-radius: 50%;"> <!-- Favicon for the website -->
-
+    <link rel="icon" href="/assets//image/Logo/favicon.ico" type="image/png" style="border-radius: 50%;">
     <!-- font icon link -->
     <link href="https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css" rel="stylesheet">
 
     <!-- External CSS Link -->
-    <link rel="stylesheet" href="style.css"> <!-- Link to external CSS file -->
-    <link rel="stylesheet" href="/src/css/navber.css"> <!-- Link to external CSS file -->
-    <link rel="stylesheet" href="/src/css/loding.css"> <!-- Link to external CSS file -->
-    <link rel="stylesheet" href="/src/css/books.css"> <!-- Link to external CSS file -->
-
-
-    <style>
-        .book-details {
-            max-width: 600px;
-            margin: auto;
-            padding: 20px;
-        }
-
-        img {
-            max-width: 100%;
-            height: auto;
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="/src/css/navber.css">
+    <link rel="stylesheet" href="/src/css/loding.css">
+    <link rel="stylesheet" href="/src/css/bookDetails.css">
 
 </head>
 
 <body style="margin: 0; box-sizing: 0;">
-
     <!-- Header Section -->
     <header class="header" id="header">
         <nav class="navbar container">
@@ -68,9 +50,7 @@
     </header>
 
 
-    <div style="margin-top: 100px;" class="container">
-        <h2>Book Details</h2>
-
+    <div class="container homeMainDiv">
         <!-- Loader -->
         <div id="loader">
             <div class="devLoader">
@@ -79,55 +59,14 @@
         </div>
 
 
-        <div class="book-details" id="book-details">
+        <div class="bookDetails" id="book-details">
             <!-- Book details will be loaded here -->
         </div>
-
     </div>
+    <div style="height: 80px;"></div>
 
-    </div>
-
-    <script>
-        // Function to get book ID from URL
-        function getBookIdFromUrl() {
-            const params = new URLSearchParams(window.location.search);
-            return params.get('id'); // Fetching the book ID from URL
-        }
-
-        // Function to load book details
-        async function loadBookDetails() {
-            const bookId = getBookIdFromUrl();
-            document.getElementById("loader").style.display = "block";
-            if (!bookId) {
-                document.getElementById('book-details').innerHTML = '<p>No book selected!</p>';
-                return;
-            }
-
-            try {
-                const response = await fetch(`https://gutendex.com/books/${bookId}`);
-                const book = await response.json();
-
-                const bookDetailsContainer = document.getElementById('book-details');
-                bookDetailsContainer.innerHTML = `
-              <h1>${book.title}</h1>
-              <img src="${book.formats['image/jpeg']}" alt="${book.title} Cover">
-              <p><strong>Author:</strong> ${book.authors[0]?.name || 'Unknown'}</p>
-              <p><strong>Genre:</strong> ${book.subjects[0] || 'N/A'}</p>
-              <p><strong>Language:</strong> ${book.languages[0] || 'N/A'}</p>
-              <p><strong>Download Count:</strong> ${book.download_count}</p>
-              <p><strong>Description:</strong> Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p> <!-- Replace with actual description if available -->
-            `;
-                document.getElementById("loader").style.display = "none";
-            } catch (error) {
-                document.getElementById('book-details').innerHTML = '<p>Error loading book details.</p>';
-                document.getElementById("loader").style.display = "none";
-            }
-        }
-
-        // Call the function to load book details
-        loadBookDetails();
-    </script>
-
+    <!-- ---------------- Javascript--------------------- -->
+    <script src="/src/pages/BookDetailsPage.js" defer></script>
     <script src="src/utils/header.js" defer></script>
 </body>
 

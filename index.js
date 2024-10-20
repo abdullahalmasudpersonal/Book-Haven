@@ -10,9 +10,10 @@ const displayBooks = async (books) => {
   if (books?.length > 0) {
     bookList.innerHTML = "";
   }
-  books?.forEach((book) => {
+  books?.forEach((book, index) => {
     const bookItem = document.createElement("div");
     bookItem.classList.add("book-item");
+    bookItem.style.animationDelay = `${index * 0.10}s`; 
     bookItem.innerHTML = `
           <div>
             <div  class='imgDiv'>

@@ -18,9 +18,10 @@ async function displaySearchResults(books) {
   if (books.length === 0) {
     resultsContainer.innerHTML = `<p>No results found for "${searchQuery}"</p>`;
   } else {
-    books.forEach((book) => {
+    books.forEach((book, index) => {
       const bookItem = document.createElement("div");
       bookItem.classList.add("search-book-item");
+      bookItem.style.animationDelay = `${index * 0.10}s`; 
       bookItem.innerHTML = `
           <div>
             <div  class='imgDiv'>

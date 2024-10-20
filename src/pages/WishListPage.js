@@ -13,9 +13,10 @@ const displayWishlistBooks = (books) => {
     return;
   }
 
-  wishlistBooks.forEach((book) => {
+  wishlistBooks.forEach((book,index) => {
     const bookItem = document.createElement("div");
     bookItem.classList.add("wishlist-book-item");
+    bookItem.style.animationDelay = `${index * 0.10}s`; 
     bookItem.innerHTML = `
     <div>
       <div  class='imgDiv'>

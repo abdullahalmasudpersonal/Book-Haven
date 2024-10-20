@@ -1,21 +1,21 @@
 /* -------- display books animation */
-
-/* .book-item > div {
+.book-item  {
   opacity: 0;
-  transform: translateY(20px);
-  animation: fadeIn 0.5s ease-in-out forwards;
+  transform: translateY(30px);
+  animation: fadeInUp 1s ease forwards;
 }
 
-@keyframes fadeIn {
+@keyframes fadeInUp {
   0% {
     opacity: 0;
-    transform: translateY(20px);
+    transform: translateY(30px);
   }
   100% {
     opacity: 1;
-    transform: translateY(0);
+    transform: translateY(0px);
   }
-} */
+}
+
 /* ---------------------------- */
 .booksDiv {
   height: 100vh;
@@ -79,6 +79,7 @@
   background-color: rgb(234, 234, 235);
   padding: 40px 20px 40px 20px;
   border-radius: 3px 3px 0 0;
+  overflow: hidden;
 }
 .book-item .imgDiv img {
   height: 200px;
@@ -86,6 +87,11 @@
   border-radius: 3px;
   box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px,
     rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
+    transition: transform 0.5s ease-in-out;
+    cursor: pointer;
+}
+.book-item .imgDiv:hover img {
+  transform: scale(1.1);
 }
 /* ------------- bookDetailsDiv ------------  */
 .book-item .bookDetailsDiv {
